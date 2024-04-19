@@ -7,7 +7,8 @@
             "files": "*.tsx",
             "options": {
                 "printWidth": 100,
-                "jsxBracketSameLine": true
+                "jsxBracketSameLine": true,
+                "semi": true
             }
         }
     ]
