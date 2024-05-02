@@ -32,7 +32,7 @@ yarn.lock
 
 # local env files
 .env*.local
-.env
+backend/env
 
 # vercel
 .vercel
@@ -45,3 +45,7 @@ next-env.d.ts
 
 # nvm
 .nvmrc
+
+# db
+database.db
+
