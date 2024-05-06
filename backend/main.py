@@ -34,7 +34,7 @@ async def create_new_case(background_tasks: BackgroundTasks = BackgroundTasks())
 
     # Schedule background tasks to modify fetched_status
     background_tasks.add_task(update_fetched_status, case_id, 2, "processing", 10)
-    background_tasks.add_task(update_fetched_status, case_id, 3,"complete", 30)
+    background_tasks.add_task(update_fetched_status, case_id, 3,"complete", 20)
 
     return {"id": case_id}
 

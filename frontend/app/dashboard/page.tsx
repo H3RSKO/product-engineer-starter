@@ -4,16 +4,14 @@ import GuidelinesUpload from "@/components/guidelines-upload";
 import MedicalRecordUpload from "@/components/medical-record-upload";
 import { useDashboard } from "@/context/dashboard-context";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 
 export const revalidate = 0;
 
 export default function DashboardRoot() {
-    const [data, setData] = useState(null);
     const { guidelinesFile, setMedicalRecord, setGuidelinesFile } = useDashboard();
     const router = useRouter();
-    const CASE_ID = "case_891a_6fbl_87d1_4326";
 
     useEffect(() => {
         // resets buttons on page load
@@ -26,12 +24,11 @@ export default function DashboardRoot() {
             const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/cases` as string, {
                 method: "post"
             });
-            const data = await response.json();
-            setData(data);
+            const { id } = await response.json();
+            router.push(`/dashboard/case/${id}`);
         } catch (error) {
             console.error("Error fetching data:", error);
         }
-        router.push(`/dashboard/case/${CASE_ID}`);
     };
 
     return (

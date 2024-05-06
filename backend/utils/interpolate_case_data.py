@@ -1,4 +1,5 @@
 import json
+import random
 from sqlmodel import SQLModel, Field
 from datetime import datetime
 from typing import Optional
@@ -17,7 +18,10 @@ def interpolate_case_data(case: Case):
 
         json_data["case_id"] = case.id
         json_data["status"] = case.status
+        json_data["created_at"] = case.created_at
     
+        if case.fetched_status == 3:
+            json_data["is_met"] = random.choice([True, False]) # randomizer to show how frontend handles approvals
         return json_data
     else:
         return case

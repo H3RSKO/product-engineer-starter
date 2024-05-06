@@ -1,7 +1,7 @@
 import sqlite3
 
 def get_connection():
-    conn = sqlite3.connect("../database.db")
+    conn = sqlite3.connect("database.db")
     return conn
 
 def migrate_cases_table():
